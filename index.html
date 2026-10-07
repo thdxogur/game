@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCADE NEXUS - Ultimate Web Games Hub</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        arcade: {
+                            dark: '#0a0915',
+                            card: '#141124',
+                            cardHover: '#1f1b36',
+                            neonPink: '#ff2a85',
+                            neonCyan: '#00f0ff',
+                            neonPurple: '#9d00ff',
+                            neonYellow: '#ffe600'
+                        }
+                    },
+                    boxShadow: {
+                        'neon-pink': '0 0 25px rgba(255, 42, 133, 0.5)',
+                        'neon-cyan': '0 0 25px rgba(0, 240, 255, 0.5)',
+                        'neon-yellow': '0 0 25px rgba(255, 230, 0, 0.5)',
+                        'card-glow': '0 10px 30px -10px rgba(0, 240, 255, 0.25)'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts - Inter & Press Start 2P -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0915;
+            color: #f3f4f6;
+            overflow-x: hidden;
+        }
+        .arcade-title {
+            font-family: 'Press Start 2P', cursive;
+        }
+        /* Cyberpunk Grid Background */
+        .cyber-grid {
+            background-size: 50px 50px;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+        }
+        /* Glowing neon text */
+        .neon-glow-cyan {
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+        .neon-glow-pink {
+            text-shadow: 0 0 10px rgba(255, 42, 133, 0.7), 0 0 20px rgba(255, 42, 133, 0.4);
+        }
+    </style>
+</head>
+<body class="cyber-grid min-h-screen flex flex-col justify-between selection:bg-arcade-neonCyan selection:text-black">
+
+    <header class="w-full border-b border-white/10 bg-arcade-dark/80 backdrop-blur-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-arcade-neonPink to-arcade-neonCyan flex items-center justify-center shadow-neon-pink">
+                    <i class="fa-solid fa-gamepad text-black text-xl"></i>
+                </div>
+                <span class="arcade-title text-base sm:text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-arcade-neonCyan to-arcade-neonPink">
+                    ARCADE NEXUS
+                </span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6 text-sm font-semibold text-gray-300">
+                <a href="#games" class="hover:text-arcade-neonCyan transition">전체 게임 (6)</a>
+                <a href="#features" class="hover:text-arcade-neonCyan transition">특징</a>
+                <div class="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-arcade-neonYellow flex items-center space-x-2">
+                    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+                    <span>SYSTEM ONLINE</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 w-full">
+        <section class="text-center mb-16 relative">
+            <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-80 h-80 bg-arcade-neonPurple/20 rounded-full blur-3xl pointer-events-none"></div>
+            <span class="inline-block px-4 py-1.5 rounded-full bg-white/5 border border-arcade-neonCyan/30 text-arcade-neonCyan text-xs sm:text-sm font-semibold mb-4 tracking-wider shadow-neon-cyan">
+                <i class="fa-solid fa-bolt mr-2"></i>PREMIUM WEB BROWSER ARCADE HUB
+            </span>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                설치 없이 바로 즐기는 <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-arcade-neonCyan via-arcade-neonPink to-arcade-neonYellow neon-glow-cyan">
+                    6가지 아케이드 게임
+                </span>
+            </h1>
+            <p class="text-gray-400 max-w-2xl mx-auto text-base sm:text-lg mb-8">
+                클릭, 추리, 기억력, 심리전까지! 웹 브라우저에서 가볍게 즐길 수 있는 최고의 미니 게임 모음에 오신 것을 환영합니다.
+            </p>
+
+            <!-- Search / Filter Bar -->
+            <div class="max-w-md mx-auto relative mb-4">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none text-gray-400">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </span>
+                <input type="text" id="game-search" placeholder="게임 이름 검색 (예: 클리커, 야구...)" class="w-full pl-11 pr-4 py-3 bg-arcade-card border border-white/10 rounded-2xl text-sm focus:outline-none focus:border-arcade-neonCyan focus:ring-2 focus:ring-arcade-neonCyan/20 transition shadow-inner">
+            </div>
+        </section>
+
+        <section id="games" class="mb-16">
+            <div class="flex items-center justify-between mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold flex items-center space-x-3">
+                    <i class="fa-solid fa-cube text-arcade-neonPink"></i>
+                    <span>GAME LIST</span>
+                </h2>
+                <div class="text-xs text-gray-400 font-mono">
+                    TOTAL 6 GAMES AVAILABLE
+                </div>
+            </div>
+
+            <div id="games-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+                <!-- 1. Clicker Game -->
+                <div class="game-card group bg-arcade-card hover:bg-arcade-cardHover rounded-2xl border border-white/10 hover:border-arcade-neonCyan transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-card-glow transform hover:-translate-y-1.5" data-title="클리커 게임 clicker_game">
+                    <div class="p-6 relative">
+                        <div class="absolute top-4 right-4 bg-arcade-neonCyan/10 text-arcade-neonCyan border border-arcade-neonCyan/30 text-xs px-2.5 py-1 rounded-full font-semibold">
+                            액션 / 타이쿤
+                        </div>
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center text-3xl mb-6 shadow-md group-hover:scale-110 transition duration-300">
+                            🖱️
+                        </div>
+                        <h3 class="text-xl font-bold mb-1 group-hover:text-arcade-neonCyan transition">클리커 게임</h3>
+                        <p class="text-xs text-gray-500 font-mono mb-3">clicker_game.html</p>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            끊임없이 클릭하여 포인트를 모으고 업그레이드를 구매해 엄청난 생산력을 달성하세요!
+                        </p>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-white/5 mt-auto">
+                        <span class="text-xs text-gray-500 font-semibold">Ready to play</span>
+                        <a href="clicker_game.html" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-arcade-neonCyan hover:text-black font-bold text-sm transition flex items-center space-x-2">
+                            <span>플레이</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. Memory Match -->
+                <div class="game-card group bg-arcade-card hover:bg-arcade-cardHover rounded-2xl border border-white/10 hover:border-arcade-neonPink transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-neon-pink transform hover:-translate-y-1.5" data-title="카드 짝맞추기 게임 memory_match">
+                    <div class="p-6 relative">
+                        <div class="absolute top-4 right-4 bg-arcade-neonPink/10 text-arcade-neonPink border border-arcade-neonPink/30 text-xs px-2.5 py-1 rounded-full font-semibold">
+                            기억력 / 퍼즐
+                        </div>
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-500 to-rose-600 flex items-center justify-center text-3xl mb-6 shadow-md group-hover:scale-110 transition duration-300">
+                            🃏
+                        </div>
+                        <h3 class="text-xl font-bold mb-1 group-hover:text-arcade-neonPink transition">카드 짝맞추기 게임</h3>
+                        <p class="text-xs text-gray-500 font-mono mb-3">memory_match.html</p>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            뒤집힌 카드의 위치를 기억하고 제한 시간 내에 모든 쌍을 맞추는 두뇌 트레이닝 게임!
+                        </p>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-white/5 mt-auto">
+                        <span class="text-xs text-gray-500 font-semibold">Ready to play</span>
+                        <a href="memory_match.html" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-arcade-neonPink hover:text-white font-bold text-sm transition flex items-center space-x-2">
+                            <span>플레이</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. Number Baseball -->
+                <div class="game-card group bg-arcade-card hover:bg-arcade-cardHover rounded-2xl border border-white/10 hover:border-arcade-neonYellow transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-neon-yellow transform hover:-translate-y-1.5" data-title="숫자 야구 게임 number_baseball">
+                    <div class="p-6 relative">
+                        <div class="absolute top-4 right-4 bg-arcade-neonYellow/10 text-arcade-neonYellow border border-arcade-neonYellow/30 text-xs px-2.5 py-1 rounded-full font-semibold">
+                            추리 / 전략
+                        </div>
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-yellow-600 flex items-center justify-center text-3xl mb-6 shadow-md group-hover:scale-110 transition duration-300">
+                            ⚾
+                        </div>
+                        <h3 class="text-xl font-bold mb-1 group-hover:text-arcade-neonYellow transition">숫자 야구 게임</h3>
+                        <p class="text-xs text-gray-500 font-mono mb-3">number_baseball.html</p>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            볼과 스트라이크 힌트를 조합하여 숨겨진 3자리 숫자를 논리적으로 추리해 맞추세요!
+                        </p>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-white/5 mt-auto">
+                        <span class="text-xs text-gray-500 font-semibold">Ready to play</span>
+                        <a href="number_baseball.html" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-arcade-neonYellow hover:text-black font-bold text-sm transition flex items-center space-x-2">
+                            <span>플레이</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. Rock Paper Scissors -->
+                <div class="game-card group bg-arcade-card hover:bg-arcade-cardHover rounded-2xl border border-white/10 hover:border-arcade-neonCyan transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-card-glow transform hover:-translate-y-1.5" data-title="가위바위보 게임 rock_paper_scissors">
+                    <div class="p-6 relative">
+                        <div class="absolute top-4 right-4 bg-arcade-neonCyan/10 text-arcade-neonCyan border border-arcade-neonCyan/30 text-xs px-2.5 py-1 rounded-full font-semibold">
+                            심리 / 아케이드
+                        </div>
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center text-3xl mb-6 shadow-md group-hover:scale-110 transition duration-300">
+                            ✌️
+                        </div>
+                        <h3 class="text-xl font-bold mb-1 group-hover:text-arcade-neonCyan transition">가위바위보 게임</h3>
+                        <p class="text-xs text-gray-500 font-mono mb-3">rock_paper_scissors.html</p>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            컴퓨터와의 스릴 넘치는 가위바위보 대결! 연승 기록에 도전하여 행운을 시험하세요.
+                        </p>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-white/5 mt-auto">
+                        <span class="text-xs text-gray-500 font-semibold">Ready to play</span>
+                        <a href="rock_paper_scissors.html" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-arcade-neonCyan hover:text-black font-bold text-sm transition flex items-center space-x-2">
+                            <span>플레이</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 5. Tic Tac Toe -->
+                <div class="game-card group bg-arcade-card hover:bg-arcade-cardHover rounded-2xl border border-white/10 hover:border-arcade-neonPink transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-neon-pink transform hover:-translate-y-1.5" data-title="틱택토 게임 tic_tac_toe">
+                    <div class="p-6 relative">
+                        <div class="absolute top-4 right-4 bg-arcade-neonPink/10 text-arcade-neonPink border border-arcade-neonPink/30 text-xs px-2.5 py-1 rounded-full font-semibold">
+                            보드 / 대결
+                        </div>
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center text-3xl mb-6 shadow-md group-hover:scale-110 transition duration-300">
+                            ❌
+                        </div>
+                        <h3 class="text-xl font-bold mb-1 group-hover:text-arcade-neonPink transition">틱택토 게임</h3>
+                        <p class="text-xs text-gray-500 font-mono mb-3">tic_tac_toe.html</p>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            가로, 세로, 대각선 먼저 3목을 완성하는 자가 승리하는 클래식 턴제 보드 게임!
+                        </p>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-white/5 mt-auto">
+                        <span class="text-xs text-gray-500 font-semibold">Ready to play</span>
+                        <a href="tic_tac_toe.html" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-arcade-neonPink hover:text-white font-bold text-sm transition flex items-center space-x-2">
+                            <span>플레이</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 6. Up Down -->
+                <div class="game-card group bg-arcade-card hover:bg-arcade-cardHover rounded-2xl border border-white/10 hover:border-arcade-neonYellow transition-all duration-300 overflow-hidden flex flex-col justify-between shadow-lg hover:shadow-neon-yellow transform hover:-translate-y-1.5" data-title="업다운 게임 up_down">
+                    <div class="p-6 relative">
+                        <div class="absolute top-4 right-4 bg-arcade-neonYellow/10 text-arcade-neonYellow border border-arcade-neonYellow/30 text-xs px-2.5 py-1 rounded-full font-semibold">
+                            직관 / 행운
+                        </div>
+                        <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center text-3xl mb-6 shadow-md group-hover:scale-110 transition duration-300">
+                            📈
+                        </div>
+                        <h3 class="text-xl font-bold mb-1 group-hover:text-arcade-neonYellow transition">업다운 게임</h3>
+                        <p class="text-xs text-gray-500 font-mono mb-3">up_down.html</p>
+                        <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                            무작위로 정해진 숫자를 최소한의 시도 횟수로 찾아내는 스릴 만점 업다운 숫자 맞추기!
+                        </p>
+                    </div>
+                    <div class="px-6 pb-6 pt-0 flex items-center justify-between border-t border-white/5 mt-auto">
+                        <span class="text-xs text-gray-500 font-semibold">Ready to play</span>
+                        <a href="up_down.html" class="px-5 py-2.5 rounded-xl bg-white/10 hover:bg-arcade-neonYellow hover:text-black font-bold text-sm transition flex items-center space-x-2">
+                            <span>플레이</span>
+                            <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Empty Search State -->
+            <div id="no-results" class="hidden text-center py-16 text-gray-400">
+                <i class="fa-solid fa-ghost text-4xl mb-3 text-arcade-neonPink"></i>
+                <p>검색 결과가 없습니다. 다른 검색어를 입력해 보세요!</p>
+            </div>
+        </section>
+
+        <section id="features" class="mt-20 py-12 border-t border-white/10 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div class="p-6 bg-arcade-card/40 rounded-2xl border border-white/5">
+                <div class="text-3xl font-extrabold text-arcade-neonCyan mb-2 arcade-title">6 GAMES</div>
+                <div class="text-gray-400 text-sm">엄선된 웹 미니게임 컬렉션</div>
+            </div>
+            <div class="p-6 bg-arcade-card/40 rounded-2xl border border-white/5">
+                <div class="text-3xl font-extrabold text-arcade-neonPink mb-2 arcade-title">INSTANT</div>
+                <div class="text-gray-400 text-sm">다운로드 없이 즉시 실행</div>
+            </div>
+            <div class="p-6 bg-arcade-card/40 rounded-2xl border border-white/5">
+                <div class="text-3xl font-extrabold text-arcade-neonYellow mb-2 arcade-title">RESPONSIVE</div>
+                <div class="text-gray-400 text-sm">PC 및 모바일 완벽 지원</div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="w-full border-t border-white/10 bg-arcade-dark py-8 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p>&copy; 2026 ARCADE NEXUS Hub. All rights reserved.</p>
+            <div class="flex space-x-6 text-gray-400">
+                <a href="clicker_game.html" class="hover:text-arcade-neonCyan transition">클리커</a>
+                <a href="memory_match.html" class="hover:text-arcade-neonPink transition">카드맞추기</a>
+                <a href="number_baseball.html" class="hover:text-arcade-neonYellow transition">숫자야구</a>
+                <a href="rock_paper_scissors.html" class="hover:text-arcade-neonCyan transition">가위바위보</a>
+                <a href="tic_tac_toe.html" class="hover:text-arcade-neonPink transition">틱택토</a>
+                <a href="up_down.html" class="hover:text-arcade-neonYellow transition">업다운</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Real-time game search filter script
+        const searchInput = document.getElementById('game-search');
+        const gameCards = document.querySelectorAll('.game-card');
+        const noResults = document.getElementById('no-results');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            gameCards.forEach(card => {
+                const titleAttr = card.getAttribute('data-title').toLowerCase();
+                const cardText = card.innerText.toLowerCase();
+
+                if (titleAttr.includes(query) || cardText.includes(query)) {
+                    card.style.display = 'flex';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            if (visibleCount === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
