@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>가위바위보 게임</title>
+    <style>
+        body { font-family: sans-serif; background: #2c3e50; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        .btns button { font-size: 2rem; padding: 15px 25px; margin: 10px; cursor: pointer; border-radius: 12px; border: none; background: #ecf0f1; transition: 0.2s; }
+        .btns button:hover { background: #bdc3c7; transform: scale(1.1); }
+        #result { font-size: 1.5rem; margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>✌️ 가위 바위 보 ✊</h1>
+    <div class="btns">
+        <button onclick="play('가위')">✌️ 가위</button>
+        <button onclick="play('바위')">✊ 바위</button>
+        <button onclick="play('보')">🖐️ 보</button>
+    </div>
+    <div id="result">선택해주세요!</div>
+    <script>
+        const choices = ['가위', '바위', '보'];
+        function play(user) {
+            const comp = choices[Math.floor(Math.random() * 3)];
+            let res = '';
+            if(user === comp) res = `무승부! (컴퓨터: ${comp})`;
+            else if((user === '가위' && comp === '보') || (user === '바위' && comp === '가위') || (user === '보' && comp === '바위')) {
+                res = `승리했습니다! 🎉 (컴퓨터: ${comp})`;
+            } else {
+                res = `졌습니다! 😭 (컴퓨터: ${comp})`;
+            }
+            document.getElementById('result').textContent = res;
+        }
+    </script>
+</body>
+</html>

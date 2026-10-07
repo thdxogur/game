@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>숫자 야구 게임</title>
+    <style>
+        body { font-family: sans-serif; background: #0f2027; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        input { padding: 10px; font-size: 1rem; border-radius: 5px; border: none; width: 150px; text-align: center; }
+        button { padding: 10px 20px; font-size: 1rem; background: #00b4d8; color: #white; border: none; border-radius: 5px; cursor: pointer; margin-left: 5px; }
+        #logs { margin-top: 20px; width: 250px; height: 150px; background: rgba(255,255,255,0.1); padding: 10px; overflow-y: auto; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>⚾ 숫자 야구 게임</h1>
+    <p>중복되지 않는 3자리 숫자를 맞춰보세요!</p>
+    <div>
+        <input type="text" id="guess" maxlength="3" placeholder="예: 123">
+        <button onclick="check()">확인</button>
+    </div>
+    <div id="logs"></div>
+    <script>
+        let answer = [];
+        while(answer.length < 3) {
+            let n = Math.floor(Math.random() * 10).toString();
+            if(!answer.includes(n)) answer.push(n);
+        }
+        let count = 0;
+        function check() {
+            let val = document.getElementById('guess').value;
+            if(val.length !== 3 || new Set(val).size !== 3) { alert('중복 없는 3자리 숫자를 입력하세요!'); return; }
+            count++;
+            let strikes = 0, balls = 0;
+            for(let i=0; i<3; i++) {
+                if(val[i] === answer[i]) strikes++;
+                else if(answer.includes(val[i])) balls++;
+            }
+            let logs = document.getElementById('logs');
+            if(strikes === 3) {
+                logs.innerHTML += `<div>🎉 ${count회 만에 정답! (${val})}</div>`;
+            } else {
+                logs.innerHTML += `<div>${val} : ${strikes}S ${balls}B</div>`;
+            }
+            document.getElementById('guess').value = '';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>업다운 게임</title>
+    <style>
+        body { font-family: sans-serif; background: #8e44ad; color: #fff; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; }
+        input { padding: 10px; font-size: 1rem; border-radius: 5px; border: none; text-align: center; }
+        button { padding: 10px 20px; font-size: 1rem; background: #f39c12; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+        #message { font-size: 1.3rem; margin-top: 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>⬆️ 업 & 다운 ⬇️</h1>
+    <p>1부터 100 사이의 숫자를 맞춰보세요!</p>
+    <div>
+        <input type="number" id="guess" min="1" max="100">
+        <button onclick="check()">입력</button>
+    </div>
+    <div id="message">게임을 시작합니다!</div>
+    <script>
+        const answer = Math.floor(Math.random() * 100) + 1;
+        let count = 0;
+        function check() {
+            const val = Number(document.getElementById('guess').value);
+            count++;
+            const msg = document.getElementById('message');
+            if(val === answer) {
+                msg.textContent = `정답입니다! 🎯 (${count}회 만에 성공)`;
+            } else if(val < answer) {
+                msg.textContent = `업! 📈 더 큰 숫자입니다.`;
+            } else {
+                msg.textContent = `다운! 📉 더 작은 숫자입니다.`;
+            }
+        }
+    </script>
+</body>
+</html>
